@@ -20,9 +20,6 @@ void Neo_Patterns::Update()
         lastUpdate = millis();
         switch(ActivePattern)
         {
-            case NONE:
-                None();
-                break;
             case RAINBOW_CYCLE:
                 RainbowCycle();
                 break;
