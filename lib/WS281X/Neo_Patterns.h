@@ -39,7 +39,7 @@ class Neo_Patterns : public Adafruit_NeoPixel
         */
         void Update();              //更新狀態
         void Increment();           //當前步驟後更新
-        void Reverse();             //恢復
+        void Reverse();             //反轉
 
     public:    
         /*

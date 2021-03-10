@@ -1,33 +1,56 @@
 #include "Arduino.h"
-#include "Stick.h"
+#include "Neo_Patterns.h"
+
+void Ring1_Complete();
+void Ring2_Complete();
+void Stick1_Complete();
+void Stick2_Complete();
+
+Neo_Patterns Ring1(24, 5, NEO_GRB + NEO_KHZ800, &Ring1_Complete);
+Neo_Patterns Ring2(16, 6, NEO_GRB + NEO_KHZ800, &Ring2_Complete);
+Neo_Patterns Stick1(16, 7, NEO_GRB + NEO_KHZ800, &Stick1_Complete);
+Neo_Patterns Stick2(13, 8, NEO_GRB + NEO_KHZ800, &Stick2_Complete);
 
 void  setup()
 {
-    //定義腳位初始化
-    //燈條1 Stick1
-    //燈條2 Stick2 ...
+    Serial.begin(115200);
+
+    //定義腳位初始化 父項函數
+    Ring1.begin();
+    Ring2.begin(); 
     Stick1.begin();
     Stick2.begin();
-    Stick3.begin();
-    Stick4.begin();
 
-    //燈條1初始化為普通燈
-    //燈條2初始化為呼吸燈
-    Stick1.Init_None(Stick1.Color(255, 0, 0));
-    Stick2.Init_Fade(Stick2.Color(0, 255, 0), Stick2.Color(0, 0, 0), 2000, 10, FORWARD);
-    Stick3.Init_RainbowCycle(20);
-    Stick4.TheaterChase(Stick4.Color(100, 255, 0), 10, FORWARD);
-
+    Ring1.Init_RainbowCycle(50, FORWARD);
+    Ring2.Init_TheaterChase(Ring2.Color(255,255,0), Ring2.Color(0,0,50), 100, FORWARD);
+    Stick1.Init_Scanner(Stick1.Color(255, 0, 0), 10);
+    Stick2.Init_Fade(Stick2.Color(100, 255, 0), Stick2.Color(255, 100, 0), 1000, 500, FORWARD);
 }
 
 void loop()
 {
-    //燈條1不斷變化
+    Ring1.Update();
+    Ring2.Update();
     Stick1.Update();
-    //燈條2不斷變化...
     Stick2.Update();
-    Stick3.Update();
-    Stick4.Update();
-
 }
 
+void Ring1_Complete()
+{
+    Ring1.Reverse();
+}
+
+void Ring2_Complete()
+{
+    Ring2.Reverse();
+}
+
+void Stick1_Complete()
+{
+    Stick1.Reverse();
+}
+
+void Stick2_Complete()
+{
+    Stick2.Reverse();
+}
