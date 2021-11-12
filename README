@@ -1,0 +1,12 @@
+狀態機控制WS2812範例
+D5
+D6
+D7
+三組燈條完全不同狀態
+
+
+參考資料
+https://learn.adafruit.com/multi-tasking-the-arduino-part-3/wiring
+https://cdn-learn.adafruit.com/downloads/pdf/multi-tasking-the-arduino-part-1.pdf?timestamp=1615194287
+https://learn.adafruit.com/multi-tasking-the-arduino-part-1/now-for-two-at-once
+
